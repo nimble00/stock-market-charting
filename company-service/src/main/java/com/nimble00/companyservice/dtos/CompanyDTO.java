@@ -10,7 +10,7 @@ import java.util.List;
 public class CompanyDTO {
     private String id;
     private String name;
-    private String turnover;
+    private Long turnover;
     private String ceo;
     private String boardOfDirs;
     private List<StockExchange> stockExchangeList;

@@ -17,7 +17,7 @@ public class Company {
     @Column(name = "company_id")
     private String id;
     private String name;
-    private String turnover;
+    private Long turnover;
     private String ceo;
     private String boardOfDirs;
     @OneToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)

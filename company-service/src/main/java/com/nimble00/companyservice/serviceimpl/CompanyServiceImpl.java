@@ -82,21 +82,21 @@ public class CompanyServiceImpl implements CompanyService {
     }
 
     @Override
-    public List<Company> findAllBySector(String sector) {
+    public List<CompanyDTO> findAllBySector(String sector) {
         modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
         Type listType = new TypeToken<List<CompanyDTO>>(){}.getType();
         return modelMapper.map(companyRepo.findAllBySector(sector),listType);
     }
 
     @Override
-    public List<Company> findCompanyByTurnoverWithin(Long lo, Long hi) {
+    public List<CompanyDTO> findCompanyByTurnoverWithin(Long lo, Long hi) {
         modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
         Type listType = new TypeToken<List<CompanyDTO>>(){}.getType();
         return modelMapper.map(companyRepo.findCompanyByTurnoverWithin(lo, hi),listType);
     }
 
     @Override
-    public List<Company> findAllByStockExchangeListContaining(String stockExchange) {
+    public List<CompanyDTO> findAllByStockExchangeListContaining(String stockExchange) {
         modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
         Type listType = new TypeToken<List<CompanyDTO>>(){}.getType();
         return modelMapper.map(companyRepo.findAllByStockExchangeListContaining(stockExchange),listType);
