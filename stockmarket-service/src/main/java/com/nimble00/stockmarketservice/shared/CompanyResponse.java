@@ -18,5 +18,5 @@ public class CompanyResponse {
     private String sector;
     private String briefWriteup;
     //    private String tickList;
-    private List<Ticker> tickerList;
+    private List<String> tickerList;
 }
