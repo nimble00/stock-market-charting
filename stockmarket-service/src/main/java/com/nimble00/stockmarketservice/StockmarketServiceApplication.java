@@ -1,17 +1,15 @@
-package com.nimble00.companyservice;
+package com.nimble00.stockmarketservice;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-//import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
-//@EnableEurekaClient
-public class CompanyServiceApplication {
+public class StockmarketServiceApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(CompanyServiceApplication.class, args);
+        SpringApplication.run(StockmarketServiceApplication.class, args);
     }
 
     @Bean

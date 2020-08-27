@@ -1,6 +1,6 @@
-package com.nimble00.companyservice.dao;
+package com.nimble00.stockmarketservice.repository;
 
-import com.nimble00.companyservice.models.IPO;
+import com.nimble00.stockmarketservice.models.IPO;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

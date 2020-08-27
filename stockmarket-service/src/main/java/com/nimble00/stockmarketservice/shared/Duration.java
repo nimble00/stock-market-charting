@@ -1,4 +1,4 @@
-package com.nimble00.companyservice.dtos;
+package com.nimble00.stockmarketservice.shared;
 
 import lombok.Data;
 

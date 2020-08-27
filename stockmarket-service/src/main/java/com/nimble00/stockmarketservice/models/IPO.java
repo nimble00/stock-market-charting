@@ -1,4 +1,4 @@
-package com.nimble00.companyservice.models;
+package com.nimble00.stockmarketservice.models;
 
 import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;

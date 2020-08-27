@@ -1,7 +1,7 @@
-package com.nimble00.companyservice.rest;
+package com.nimble00.stockmarketservice.controllers;
 
-import com.nimble00.companyservice.dtos.StockExchangeDTO;
-import com.nimble00.companyservice.services.StockExchangeService;
+import com.nimble00.stockmarketservice.shared.StockExchangeDTO;
+import com.nimble00.stockmarketservice.services.StockExchangeService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

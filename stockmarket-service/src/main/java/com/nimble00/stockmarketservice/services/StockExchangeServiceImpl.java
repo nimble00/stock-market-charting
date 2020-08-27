@@ -1,9 +1,9 @@
-package com.nimble00.companyservice.serviceimpl;
+package com.nimble00.stockmarketservice.services;
 
-import com.nimble00.companyservice.dao.StockExchangeRepo;
-import com.nimble00.companyservice.dtos.StockExchangeDTO;
-import com.nimble00.companyservice.models.StockExchange;
-import com.nimble00.companyservice.services.StockExchangeService;
+import com.nimble00.stockmarketservice.repository.StockExchangeRepo;
+import com.nimble00.stockmarketservice.shared.StockExchangeDTO;
+import com.nimble00.stockmarketservice.models.StockExchange;
+import com.nimble00.stockmarketservice.services.StockExchangeService;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
 import org.modelmapper.convention.MatchingStrategies;
@@ -32,6 +32,10 @@ public class StockExchangeServiceImpl implements StockExchangeService {
     public StockExchangeDTO createStockExchange(StockExchangeDTO stockExchangeDTO) {
         String str = UUID.randomUUID().toString();
         stockExchangeDTO.setId(str);
+
+        System.out.println("#########***###########");
+        System.out.println(stockExchangeDTO.toString());
+        System.out.println("####################");
         stockExchangeRepo.save(modelMapper.map(stockExchangeDTO, StockExchange.class));
         return stockExchangeDTO;
     }

@@ -1,7 +1,6 @@
-package com.nimble00.companyservice.services;
+package com.nimble00.stockmarketservice.services;
 
-import com.nimble00.companyservice.dtos.StockExchangeDTO;
-import com.nimble00.companyservice.models.StockExchange;
+import com.nimble00.stockmarketservice.shared.StockExchangeDTO;
 
 import java.util.List;
 
