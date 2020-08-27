@@ -64,7 +64,7 @@ public class CompanyServiceImpl implements CompanyService {
         System.out.println(company.toString());
         System.out.println("####################");
         companyRequest.setId(str);
-        return modelMapper.map(companyRequest,CompanyResponse.class);
+        return modelMapper.map(company,CompanyResponse.class);
     }
 
     @Override
