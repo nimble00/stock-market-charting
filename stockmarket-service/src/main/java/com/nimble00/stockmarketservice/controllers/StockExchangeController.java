@@ -48,3 +48,12 @@ public class StockExchangeController {
         return ResponseEntity.status(HttpStatus.FOUND).body(stockExchangeDTO);
     }
 }
+
+// Test object for Postman
+
+//{
+//        "name": "NYSE",
+//        "brief": "nothing much",
+//        "contactAddress": "new york",
+//        "remarks":"biggest"
+//}

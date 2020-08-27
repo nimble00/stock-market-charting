@@ -81,3 +81,15 @@ public class CompanyController {
         return ResponseEntity.status(HttpStatus.OK).body(companyDTO);
     }
 }
+
+// Test objects for Postman
+//{
+//        "name": "tesla",
+//        "turnover": 100000,
+//        "ceo": "daddy musk",
+//        "boardOfDirs": "[some old dudes,more old dudes]",
+//        "stockExchangeList": ["NYSE"],
+//        "sector": "tech",
+//        "briefWriteup": "bullish",
+//        "tickerList": ["TSLA"]
+//}
