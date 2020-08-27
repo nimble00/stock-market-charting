@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface StockExchangeRepo extends JpaRepository<StockExchange,String> {
-    
+    public StockExchange findByName(String name);
 }

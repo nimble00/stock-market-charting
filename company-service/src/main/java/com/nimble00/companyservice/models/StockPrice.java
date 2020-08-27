@@ -19,5 +19,5 @@ public class StockPrice {
     private float currentPrice;
     private String stockExchange;
     private String currentDate;
-    private String time;
+    private String timeStamp;
 }
