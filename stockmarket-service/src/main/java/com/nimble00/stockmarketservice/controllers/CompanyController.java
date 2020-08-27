@@ -3,6 +3,7 @@ package com.nimble00.stockmarketservice.controllers;
 import com.nimble00.stockmarketservice.shared.CompanyRequest;
 import com.nimble00.stockmarketservice.shared.CompanyResponse;
 import com.nimble00.stockmarketservice.services.CompanyService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,7 +15,11 @@ import java.util.List;
 @RequestMapping("/company")
 public class CompanyController {
 
-    private CompanyService companyService;
+    private final CompanyService companyService;
+
+    public CompanyController(CompanyService companyService) {
+        this.companyService = companyService;
+    }
 
     @GetMapping("/test")
     public String test() {

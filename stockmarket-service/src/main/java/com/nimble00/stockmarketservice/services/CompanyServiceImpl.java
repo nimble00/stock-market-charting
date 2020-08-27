@@ -43,8 +43,7 @@ public class CompanyServiceImpl implements CompanyService {
     @Override
     public CompanyResponse createCompany(CompanyRequest companyRequest) throws IOException {
         Company company = new Company();
-        ObjectMapper objectMapper = new ObjectMapper();
-        List<String> list = objectMapper.readValue((JsonParser) companyRequest.getStockExchangeList(), List.class);
+        List<String> list = companyRequest.getStockExchangeList();
         String str = UUID.randomUUID().toString();
         company.setId(str);
         company.setBoardOfDirs(companyRequest.getBoardOfDirs());
@@ -57,8 +56,7 @@ public class CompanyServiceImpl implements CompanyService {
             listSE.add(stockExchangeRepo.findByName(st));
         }
         company.setStockExchangeList(listSE);
-        List<String> list1 = objectMapper.readValue((JsonParser) companyRequest.getTickerList(), List.class);
-        company.setTickerList(list1);
+        company.setTickerList(companyRequest.getTickerList());
         company.setTurnover(companyRequest.getTurnover());
         companyRepo.save(company);
         System.out.println("#########***###########");

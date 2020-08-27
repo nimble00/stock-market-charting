@@ -2,6 +2,7 @@ package com.nimble00.stockmarketservice.controllers;
 
 import com.nimble00.stockmarketservice.shared.StockExchangeDTO;
 import com.nimble00.stockmarketservice.services.StockExchangeService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,7 +13,11 @@ import java.util.List;
 @RequestMapping("/stockExchange")
 public class StockExchangeController {
 
-    private StockExchangeService stockExchangeService;
+    private final StockExchangeService stockExchangeService;
+
+    public StockExchangeController(StockExchangeService stockExchangeService) {
+        this.stockExchangeService = stockExchangeService;
+    }
 
     @GetMapping("/test")
     public String test() {

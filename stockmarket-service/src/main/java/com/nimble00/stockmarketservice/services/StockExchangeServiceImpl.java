@@ -30,14 +30,15 @@ public class StockExchangeServiceImpl implements StockExchangeService {
 
     @Override
     public StockExchangeDTO createStockExchange(StockExchangeDTO stockExchangeDTO) {
-        String str = UUID.randomUUID().toString();
-        stockExchangeDTO.setId(str);
-
+        modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
         System.out.println("#########***###########");
         System.out.println(stockExchangeDTO.toString());
         System.out.println("####################");
-        stockExchangeRepo.save(modelMapper.map(stockExchangeDTO, StockExchange.class));
-        return stockExchangeDTO;
+        StockExchange stockExchange = modelMapper.map(stockExchangeDTO, StockExchange.class);
+        String str = UUID.randomUUID().toString();
+        stockExchange.setId(str);
+        stockExchangeRepo.save(stockExchange);
+        return modelMapper.map(stockExchange, StockExchangeDTO.class);
     }
 
     @Override
