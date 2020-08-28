@@ -6,15 +6,15 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Data
 @Entity
 @DynamicUpdate
 public class User {
-    @Id @GeneratedValue(generator="system-uuid")
-    @GenericGenerator(name="system-uuid", strategy = "uuid")
-    private String id;
+    @Id @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer id;
     private String username;
     private String password;
     private String userType; // "admin" or "user"

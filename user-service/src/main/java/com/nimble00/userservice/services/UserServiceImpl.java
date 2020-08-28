@@ -25,9 +25,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserResponseModel addUser(UserRequestModel userRequestModel) {
         modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
-        String str = UUID.randomUUID().toString();
         User user = modelMapper.map(userRequestModel,User.class);
-        user.setId(str);
         userDAO.save(user);
         return modelMapper.map(user,UserResponseModel.class);
     }
