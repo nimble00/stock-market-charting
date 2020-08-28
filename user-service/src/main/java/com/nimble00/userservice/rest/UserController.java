@@ -13,6 +13,10 @@ public class UserController {
 
     UserService userService;
 
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }
+
     @GetMapping("/test")
     public String test() {
         return "user service is working";
