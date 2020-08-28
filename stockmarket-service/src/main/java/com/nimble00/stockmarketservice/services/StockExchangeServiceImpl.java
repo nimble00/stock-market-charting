@@ -31,12 +31,12 @@ public class StockExchangeServiceImpl implements StockExchangeService {
     @Override
     public StockExchangeDTO createStockExchange(StockExchangeDTO stockExchangeDTO) {
         modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
-        System.out.println("#########***###########");
-        System.out.println(stockExchangeDTO.toString());
-        System.out.println("####################");
+        String exchangeName = stockExchangeDTO.getName();
+        StockExchange stockExchange1 = stockExchangeRepo.findByName(exchangeName);
+        if (stockExchange1!=null) {
+            return modelMapper.map(stockExchange1,StockExchangeDTO.class);
+        }
         StockExchange stockExchange = modelMapper.map(stockExchangeDTO, StockExchange.class);
-        String str = UUID.randomUUID().toString();
-        stockExchange.setId(str);
         stockExchangeRepo.save(stockExchange);
         return modelMapper.map(stockExchange, StockExchangeDTO.class);
     }
@@ -55,7 +55,7 @@ public class StockExchangeServiceImpl implements StockExchangeService {
     }
 
     @Override
-    public StockExchangeDTO findStockExchangeById(String id) {
+    public StockExchangeDTO findStockExchangeById(Integer id) {
         Optional<StockExchange> optionalStockExchange = stockExchangeRepo.findById(id);
         if (optionalStockExchange.isPresent()) {
             StockExchange stockExchange = optionalStockExchange.get();

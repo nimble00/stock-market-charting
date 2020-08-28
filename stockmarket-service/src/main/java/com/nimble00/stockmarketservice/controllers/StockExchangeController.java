@@ -43,7 +43,7 @@ public class StockExchangeController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<StockExchangeDTO> getStockExchangeById(@PathVariable String id) {
+    public ResponseEntity<StockExchangeDTO> getStockExchangeById(@PathVariable Integer id) {
         StockExchangeDTO stockExchangeDTO = stockExchangeService.findStockExchangeById(id);
         return ResponseEntity.status(HttpStatus.FOUND).body(stockExchangeDTO);
     }

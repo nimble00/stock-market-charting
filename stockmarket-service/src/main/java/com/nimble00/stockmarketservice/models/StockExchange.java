@@ -4,20 +4,15 @@ import lombok.Data;
 import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Data
 @Entity
 @DynamicUpdate
 public class StockExchange {
-    @Id
-    @GeneratedValue(generator="system-uuid")
-    @GenericGenerator(name="system-uuid", strategy = "uuid")
+    @Id @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "exchange_id")
-    private String id;
+    private Integer id;
     private String name;
     private String brief;
     private String contactAddress;

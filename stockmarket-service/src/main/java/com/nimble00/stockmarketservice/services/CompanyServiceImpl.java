@@ -1,14 +1,11 @@
 package com.nimble00.stockmarketservice.services;
 
-import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.nimble00.stockmarketservice.repository.CompanyRepo;
 import com.nimble00.stockmarketservice.repository.StockExchangeRepo;
 import com.nimble00.stockmarketservice.shared.CompanyRequest;
 import com.nimble00.stockmarketservice.shared.CompanyResponse;
 import com.nimble00.stockmarketservice.models.Company;
 import com.nimble00.stockmarketservice.models.StockExchange;
-import com.nimble00.stockmarketservice.services.CompanyService;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
 import org.modelmapper.convention.MatchingStrategies;
@@ -43,8 +40,10 @@ public class CompanyServiceImpl implements CompanyService {
     @Override
     public CompanyResponse createCompany(CompanyRequest companyRequest) throws IOException {
         Company company = new Company();
-        String str = UUID.randomUUID().toString();
-        company.setId(str);
+        Company company1 = companyRepo.findByName(companyRequest.getName());
+        if (company1!=null) {
+            return modelMapper.map(company1,CompanyResponse.class);
+        }
         company.setBoardOfDirs(companyRequest.getBoardOfDirs());
         company.setBriefWriteup(companyRequest.getBriefWriteup());
         company.setCeo(companyRequest.getCeo());
@@ -59,19 +58,33 @@ public class CompanyServiceImpl implements CompanyService {
         company.setTickerList(companyRequest.getTickerList());
         company.setTurnover(companyRequest.getTurnover());
         companyRepo.save(company);
-        return modelMapper.map(company,CompanyResponse.class);
+        company1 = companyRepo.findByName(company.getName());
+        return modelMapper.map(company1,CompanyResponse.class);
     }
 
     @Override
-    public CompanyResponse updateCompany(CompanyRequest companyDTO) {
-        companyRepo.save(modelMapper.map(companyDTO,Company.class));
-        Optional<Company> optionalCompany = companyRepo.findById(companyDTO.getId());
+    public CompanyResponse updateCompany(CompanyRequest companyRequest, Integer companyId) {
+        Optional<Company> optionalCompany = companyRepo.findById(companyId);
         Company company = optionalCompany.get();
+        List<StockExchange> listSE = new ArrayList<>();
+        List<String> list = companyRequest.getStockExchangeList();
+        for (String st: list) {
+            listSE.add(stockExchangeRepo.findByName(st));
+        }
+        company.setStockExchangeList(listSE);
+        company.setBoardOfDirs(companyRequest.getBoardOfDirs());
+        company.setBriefWriteup(companyRequest.getBriefWriteup());
+        company.setCeo(companyRequest.getCeo());
+        company.setName(companyRequest.getName());
+        company.setSector(companyRequest.getSector());
+        company.setTickerList(companyRequest.getTickerList());
+        company.setTurnover(companyRequest.getTurnover());
+        companyRepo.save(company);
         return modelMapper.map(company,CompanyResponse.class);
     }
 
     @Override
-    public CompanyResponse findByTickerListContaining(String ticker) {
+    public CompanyResponse findByTickListContaining(String ticker) {
         Company company = companyRepo.findByTickerListContaining(ticker);
         if (company!=null) {
             return modelMapper.map(company, CompanyResponse.class);
@@ -81,7 +94,7 @@ public class CompanyServiceImpl implements CompanyService {
     }
 
     @Override
-    public CompanyResponse findByName(String name) {
+    public CompanyResponse findByCompanyName(String name) {
         Company company = companyRepo.findByName(name);
         if (company!=null) {
             return modelMapper.map(company, CompanyResponse.class);
@@ -91,7 +104,7 @@ public class CompanyServiceImpl implements CompanyService {
     }
 
     @Override
-    public CompanyResponse findById(String id) {
+    public CompanyResponse findByCompanyId(Integer id) {
         Optional<Company> optionalCompany = companyRepo.findById(id);
         if (optionalCompany.isPresent()) {
             return modelMapper.map(optionalCompany.get(), CompanyResponse.class);
@@ -101,7 +114,7 @@ public class CompanyServiceImpl implements CompanyService {
     }
 
     @Override
-    public List<CompanyResponse> findAllBySector(String sector) {
+    public List<CompanyResponse> findAllCompanyBySector(String sector) {
         modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
         Type listType = new TypeToken<List<CompanyResponse>>(){}.getType();
         return modelMapper.map(companyRepo.findAllBySector(sector),listType);
@@ -115,9 +128,10 @@ public class CompanyServiceImpl implements CompanyService {
 //    }
 
     @Override
-    public List<CompanyResponse> findAllByStockExchangeListContaining(String stockExchange) {
+    public List<CompanyResponse> findAllByExchangeListContaining(String stockExchange) {
         modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
         Type listType = new TypeToken<List<CompanyResponse>>(){}.getType();
-        return modelMapper.map(companyRepo.findAllByStockExchangeListContaining(stockExchange),listType);
+        StockExchange stockExchange1 = stockExchangeRepo.findByName(stockExchange);
+        return modelMapper.map(companyRepo.findAllByStockExchangeListContaining(stockExchange1),listType);
     }
 }

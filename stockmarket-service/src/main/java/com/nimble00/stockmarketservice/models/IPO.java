@@ -3,17 +3,14 @@ package com.nimble00.stockmarketservice.models;
 import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Data
 @Entity
 public class IPO {
-    @Id
-    @GeneratedValue(generator="system-uuid")
-    @GenericGenerator(name="system-uuid", strategy = "uuid")
-    private String id;
+    @Id @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "ipo_id")
+    private Integer id;
     private String companyName;
     private String stockExchange;
     private String price;

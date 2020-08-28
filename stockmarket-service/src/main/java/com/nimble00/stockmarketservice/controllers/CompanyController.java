@@ -33,7 +33,7 @@ public class CompanyController {
 
     @GetMapping("/{sector}")
     public ResponseEntity<List> getAllCompaniesInSector(@PathVariable String sector) {
-        return ResponseEntity.status(HttpStatus.FOUND).body(companyService.findAllBySector(sector));
+        return ResponseEntity.status(HttpStatus.FOUND).body(companyService.findAllCompanyBySector(sector));
     }
 
 //    @PostMapping("/turnover")
@@ -42,42 +42,39 @@ public class CompanyController {
 //        return ResponseEntity.status(HttpStatus.FOUND).body(list);
 //    }
 
-    @GetMapping("/{ticker}")
+    @GetMapping("/ticker/{ticker}")
     public ResponseEntity<CompanyResponse> getCompanyByTicker(@PathVariable String ticker) {
-        CompanyResponse companyDTO = companyService.findByTickerListContaining(ticker);
+        CompanyResponse companyDTO = companyService.findByTickListContaining(ticker);
         return ResponseEntity.status(HttpStatus.OK).body(companyDTO);
     }
 
-    @GetMapping("/{name}")
+    @GetMapping("/name/{name}")
     public ResponseEntity<CompanyResponse> getCompanyByName(@PathVariable String name) {
-        CompanyResponse companyDTO = companyService.findByName(name);
+        CompanyResponse companyDTO = companyService.findByCompanyName(name);
         return ResponseEntity.status(HttpStatus.OK).body(companyDTO);
     }
 
-    @PatchMapping("/updateInfo")
-    public ResponseEntity<CompanyResponse> updateCompanyInfo(@RequestBody CompanyRequest companyDTO) {
-        CompanyResponse companyDTO1 = companyService.updateCompany(companyDTO);
+    @PostMapping("/updateInfo/{companyId}")
+    public ResponseEntity<CompanyResponse> updateCompanyInfo(@RequestBody CompanyRequest companyDTO, @PathVariable Integer companyId) {
+        CompanyResponse companyDTO1 = companyService.updateCompany(companyDTO, companyId);
         return ResponseEntity.status(HttpStatus.ACCEPTED).body(companyDTO1);
     }
 
     @PostMapping("/addCompany")
     public ResponseEntity<CompanyResponse> addNewCompany(@RequestBody CompanyRequest companyDTO) throws IOException {
-        System.out.println("####################");
-        System.out.println(companyDTO.toString());
-        System.out.println("####################");
         CompanyResponse companyDTO1 = companyService.createCompany(companyDTO);
         return ResponseEntity.status(HttpStatus.CREATED).body(companyDTO1);
     }
 
-    @GetMapping("{/{stockExchange}")
+    @GetMapping("/allInStockExchange/{stockExchange}")
     public ResponseEntity<List> getCompanyByStockExchange(@PathVariable String stockExchange) {
-        List<CompanyResponse> list = companyService.findAllByStockExchangeListContaining(stockExchange);
+        List<CompanyResponse> list = companyService.findAllByExchangeListContaining(stockExchange);
         return ResponseEntity.status(HttpStatus.FOUND).body(list);
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<CompanyResponse> getCompanyById(@PathVariable String id) {
-        CompanyResponse companyDTO = companyService.findById(id);
+    @GetMapping("/id/{id}")
+    public ResponseEntity<CompanyResponse> getCompanyById(@PathVariable Integer id) {
+        CompanyResponse companyDTO = companyService.findByCompanyId(id);
         return ResponseEntity.status(HttpStatus.OK).body(companyDTO);
     }
 }
@@ -92,4 +89,15 @@ public class CompanyController {
 //        "sector": "tech",
 //        "briefWriteup": "bullish",
 //        "tickerList": ["TSLA"]
+//}
+
+//{
+//        "name": "amazon",
+//        "turnover": 9999999999,
+//        "ceo": "uncle bejos",
+//        "boardOfDirs": "[some old dudes]",
+//        "stockExchangeList": ["NYSE","NASDAQ"],
+//        "sector": "tech",
+//        "briefWriteup": "bullish",
+//        "tickerList": ["AMZN","AZN"]
 //}

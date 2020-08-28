@@ -8,5 +8,5 @@ public interface StockExchangeService {
     public StockExchangeDTO createStockExchange(StockExchangeDTO stockExchangeDTO);
     public List<StockExchangeDTO> findAllStockExchanges();
     public StockExchangeDTO findStockExchangeByName(String name);
-    public StockExchangeDTO findStockExchangeById(String id);
+    public StockExchangeDTO findStockExchangeById(Integer id);
 }

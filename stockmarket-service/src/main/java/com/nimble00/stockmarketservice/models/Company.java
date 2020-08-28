@@ -13,10 +13,9 @@ import java.util.List;
 @DynamicUpdate
 @Entity
 public class Company {
-    @Id @GeneratedValue(generator="system-uuid")
-    @GenericGenerator(name="system-uuid", strategy = "uuid")
+    @Id @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "company_id")
-    private String id;
+    private Integer id;
     private String name;
     private Long turnover;
     private String ceo;
