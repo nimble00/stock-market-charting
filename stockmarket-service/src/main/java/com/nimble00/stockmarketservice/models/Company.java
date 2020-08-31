@@ -1,8 +1,10 @@
 package com.nimble00.stockmarketservice.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import com.nimble00.stockmarketservice.models.StockExchange;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.annotations.GenericGenerator;
 
@@ -12,6 +14,8 @@ import java.util.List;
 @Data
 @DynamicUpdate
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
 public class Company {
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "company_id")

@@ -13,10 +13,21 @@ import java.util.List;
 @RequestMapping("/stockExchange")
 public class StockExchangeController {
 
-    private final StockExchangeService stockExchangeService;
+    //    @Autowired
+    private StockExchangeService stockExchangeService;
+
+//    public StockExchangeController(StockExchangeService stockExchangeService) {
+//        this.stockExchangeService = stockExchangeService;
+//    }
+
 
     public StockExchangeController(StockExchangeService stockExchangeService) {
+        super();
         this.stockExchangeService = stockExchangeService;
+    }
+
+    public StockExchangeController() {
+        
     }
 
     @GetMapping("/test")
@@ -42,7 +53,7 @@ public class StockExchangeController {
         return ResponseEntity.status(HttpStatus.FOUND).body(stockExchangeDTO);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/id/{id}")
     public ResponseEntity<StockExchangeDTO> getStockExchangeById(@PathVariable Integer id) {
         StockExchangeDTO stockExchangeDTO = stockExchangeService.findStockExchangeById(id);
         return ResponseEntity.status(HttpStatus.FOUND).body(stockExchangeDTO);
