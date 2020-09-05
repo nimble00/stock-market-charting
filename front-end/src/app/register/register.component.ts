@@ -1,31 +1,31 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { AuthService } from '../services/auth.service';
 import { ValidationService } from '../services/validation.service';
 import { IUserLogin } from '../shared/interfaces';
-
+import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  selector: 'app-register',
+  templateUrl: './register.component.html',
+  styleUrls: ['./register.component.css']
 })
+export class RegisterComponent implements OnInit {
 
-
-export class LoginComponent implements OnInit {
-
-  loginForm: FormGroup;
+  registerForm: FormGroup;
   errorMessage: string;
-
+  usertype: string;
   constructor(private formBuilder: FormBuilder,
     private router: Router,
     private authService: AuthService) {
-    this.loginForm = this.formBuilder.group({
+    this.registerForm = this.formBuilder.group({
       // email:      ['', [ Validators.required, ValidationService.emailValidator ]],
       // password:   ['', [ Validators.required, ValidationService.passwordValidator ]]
+      usertype: "admin",
+      fullname: "",
       email: "",
+      phone: "",
       password: ""
     });
   }
@@ -34,9 +34,15 @@ export class LoginComponent implements OnInit {
 
   }
 
-  onSubmit(loginData) {
+  onSubmit(registerData) {
     // IMPLEMENT AUTHENTICATION HERE!!!
-    this.loginForm.reset();
-    console.warn('Your order has been submitted', loginData);
+    this.registerForm.reset();
+    console.warn('Your order has been submitted', registerData);
+    console.log(this.usertype);
   }
+
+  updateUsertype(value) {
+    this.usertype = value;
+  }
+
 }

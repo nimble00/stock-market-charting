@@ -1,0 +1,42 @@
+<div class="" >
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit(registerForm.value)">
+        <div>
+            <label for="usertype">
+                User Type
+            </label>
+            <select id="usertype" formControlName="usertype">
+                <option value="">--choose an option--</option>
+                <option value="admin">admin</option>
+                <option value="analyst">analyst</option>
+            </select>
+        </div>
+        <div>
+            <label for="fullname">
+                Full Name
+            </label>
+            <input id="fullname" type="text" formControlName="fullname">
+        </div>
+        <div>
+            <label for="email">
+                Email
+            </label>
+            <input id="email" type="text" formControlName="email">
+        </div>
+        <div>
+            <label for="phone">
+                Phone
+            </label>
+            <input id="phone" type="text" formControlName="phone">
+        </div>
+    
+        <div>
+            <label for="password">
+                Password
+            </label>
+            <input id="password" type="text" formControlName="password">
+        </div>
+    
+        <button class="button" type="submit">Register</button>
+    
+    </form>
+</div>

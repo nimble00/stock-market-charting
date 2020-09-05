@@ -1,4 +1,3 @@
-// Original version created by Cory Rylan: https://coryrylan.com/blog/angular-2-form-builder-and-validation-management
 import { Injectable } from '@angular/core';
 import { AbstractControl } from '@angular/forms';
 

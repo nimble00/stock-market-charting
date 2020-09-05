@@ -5,23 +5,27 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UsersComponent } from './users/users.component';
 import { AdminComponent } from './admin/admin.component';
-import { NavbarComponent } from './navbar/navbar.component';
 import { LoginComponent } from './login/login.component';
-import { FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AdminNavbarComponent } from './components/admin-navbar/admin-navbar.component';
+import { UserNavbarComponent } from './components/user-navbar/user-navbar.component';
+import { ReactiveFormsModule } from "@angular/forms";
+import { RegisterComponent } from './register/register.component';
+import { TopbarComponent } from './topbar/topbar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UsersComponent,
     AdminComponent,
-    NavbarComponent,
-    LoginComponent
+    LoginComponent,
+    AdminNavbarComponent,
+    UserNavbarComponent,
+    RegisterComponent,
+    TopbarComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule,
     ReactiveFormsModule
   ],
   providers: [],
