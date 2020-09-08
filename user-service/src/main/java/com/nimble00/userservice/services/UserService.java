@@ -1,9 +1,13 @@
 package com.nimble00.userservice.services;
 
-import com.nimble00.userservice.dtos.UserRequestModel;
-import com.nimble00.userservice.dtos.UserResponseModel;
+import com.nimble00.userservice.dtos.UserRequest;
+import com.nimble00.userservice.dtos.UserResponse;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 
-public interface UserService {
-    public UserResponseModel addUser(UserRequestModel userRequestModel);
-    public UserResponseModel updateUser(UserRequestModel userRequestModel);
+public interface UserService extends UserDetailsService {
+    public UserResponse addUser(UserRequest userRequest);
+    public UserResponse updateUser(UserRequest userRequest, Long id);
+    public UserDetails loadUserByUsername(String email);
+    public UserResponse findUserByEmail(String email);
 }

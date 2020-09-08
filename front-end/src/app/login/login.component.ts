@@ -4,7 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { AuthService } from '../services/auth.service';
 import { ValidationService } from '../services/validation.service';
-import { IUserLogin } from '../shared/interfaces';
+import { MyUserLogin } from '../shared/interfaces';
 
 
 @Component({
@@ -23,10 +23,10 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private authService: AuthService) {
     this.loginForm = this.formBuilder.group({
-      // email:      ['', [ Validators.required, ValidationService.emailValidator ]],
-      // password:   ['', [ Validators.required, ValidationService.passwordValidator ]]
-      email: "",
-      password: ""
+      email:      ['', [ Validators.required, ValidationService.emailValidator ]],
+      password:   ['', [ Validators.required, ValidationService.passwordValidator ]]
+      // email: "",
+      // password: ""
     });
   }
 

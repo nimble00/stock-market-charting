@@ -1,1 +1,27 @@
-<p>user-navbar works!</p>
+<nav class="navbar navbar-inner navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" 
+                    (click)="isCollapsed = !isCollapsed">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" routerLink="/home">
+                <!-- <img src="assets/images/people.png" alt="logo" /> -->
+                <span class="app-title">STOCK MARKET CHARTING</span>
+            </a>
+            <span class="navbar-collapse" [attr.data-collapse]="isCollapsed">
+                <ul class="nav navbar-nav nav-pills navBarPadding">
+                    <li routerLinkActive="active"><a routerLink="/companies">companies</a></li>
+                    <li routerLinkActive="active"><a routerLink="/exchanges">stock exchanges</a></li>
+                    <li routerLinkActive="active"><a routerLink="/ipo">ipo's</a></li>
+                    <li routerLinkActive="active"><a routerLink="/upload">import data</a></li>
+                    <li routerLinkActive="active"><a>{{ loginLogoutText }}</a></li> 
+                    <!-- (click)="loginOrOut()" -->
+                </ul>
+            </span>
+        </div>
+    </div>
+</nav>

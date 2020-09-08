@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { AuthService } from '../services/auth.service';
 import { ValidationService } from '../services/validation.service';
-import { IUserLogin } from '../shared/interfaces';
+import { MyUserLogin } from '../shared/interfaces';
 import { Router } from '@angular/router';
 
 @Component({
@@ -39,10 +39,6 @@ export class RegisterComponent implements OnInit {
     this.registerForm.reset();
     console.warn('Your order has been submitted', registerData);
     console.log(this.usertype);
-  }
-
-  updateUsertype(value) {
-    this.usertype = value;
   }
 
 }

@@ -11,6 +11,8 @@ import { UserNavbarComponent } from './components/user-navbar/user-navbar.compon
 import { ReactiveFormsModule } from "@angular/forms";
 import { RegisterComponent } from './register/register.component';
 import { TopbarComponent } from './topbar/topbar.component';
+import { VerifyEmailComponent } from './components/verify-email/verify-email.component';
+import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { TopbarComponent } from './topbar/topbar.component';
     AdminNavbarComponent,
     UserNavbarComponent,
     RegisterComponent,
-    TopbarComponent
+    TopbarComponent,
+    VerifyEmailComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

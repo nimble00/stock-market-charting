@@ -1,0 +1,14 @@
+<app-topbar></app-topbar>
+
+<form [formGroup]="verifyForm" (ngSubmit)="onSubmit(verifyForm.value)">
+  
+    <div>
+      <label for="token">
+        Verification Code
+      </label>
+      <input id="token" type="text" formControlName="token">
+    </div>
+  
+    <button class="button" type="submit">Submit</button>
+  
+</form>

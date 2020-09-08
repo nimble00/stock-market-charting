@@ -1,21 +1,28 @@
+<app-topbar></app-topbar>
+
 <form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm.value)">
 
     <div>
-      <label for="email">
-        Email
-      </label>
-      <input id="email" type="text" formControlName="email">
+        <label for="email">
+            Email
+        </label>
+        <input id="email" type="text" formControlName="email" required>
     </div>
-  
-    <div>
-      <label for="password">
-        Password
-      </label>
-      <input id="password" type="text" formControlName="password">
-    </div>
-  
-    <button class="button" type="submit">Login</button>
 
-    <a [routerLink]="['/register']" routerLinkActive="router-link-active"  class="">Register</a>
-  
-  </form>
+    <div>
+        <label for="password">
+            Password
+        </label>
+        <input id="password" type="password" formControlName="password" required>
+        <p>Password must have at least 6 characters and at least one numeric character</p>
+    </div>
+
+    <a [routerLink]="['/home']" routerLinkActive="router-link-active"  class="">
+        <button class="button" type="submit" [disabled]="!loginForm.valid">Login</button>
+    </a>
+    &nbsp;
+    <a [routerLink]="['/register']" routerLinkActive="router-link-active" class="">
+        <button class="button">Register</button>
+    </a>
+
+</form>

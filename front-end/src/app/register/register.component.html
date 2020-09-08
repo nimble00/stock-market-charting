@@ -1,11 +1,13 @@
+<app-topbar></app-topbar>
+
 <div class="" >
     <form [formGroup]="registerForm" (ngSubmit)="onSubmit(registerForm.value)">
         <div>
             <label for="usertype">
-                User Type
+                Choose User Type
             </label>
             <select id="usertype" formControlName="usertype">
-                <option value="">--choose an option--</option>
+                <!-- <option value="">--choose an option--</option> -->
                 <option value="admin">admin</option>
                 <option value="analyst">analyst</option>
             </select>
@@ -14,29 +16,32 @@
             <label for="fullname">
                 Full Name
             </label>
-            <input id="fullname" type="text" formControlName="fullname">
+            <input id="fullname" type="text" formControlName="fullname" required>
         </div>
         <div>
             <label for="email">
                 Email
             </label>
-            <input id="email" type="text" formControlName="email">
+            <input id="email" type="text" formControlName="email" required>
         </div>
         <div>
             <label for="phone">
                 Phone
             </label>
-            <input id="phone" type="text" formControlName="phone">
+            <input id="phone" type="text" formControlName="phone" required>
         </div>
     
         <div>
             <label for="password">
                 Password
             </label>
-            <input id="password" type="text" formControlName="password">
+            <input id="password" type="text" formControlName="password" required>
         </div>
-    
-        <button class="button" type="submit">Register</button>
+        
+        <a [routerLink]="['/verify']" routerLinkActive="router-link-active"  class="">
+            <button class="button" type="submit" [disabled]="!registerForm.valid">Register</button>
+        </a>
+        
     
     </form>
 </div>

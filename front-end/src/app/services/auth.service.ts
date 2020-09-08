@@ -1,10 +1,13 @@
 import { Injectable } from '@angular/core';
 
+import { MyUser } from "../shared/interfaces";
+
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
+  user: MyUser;
   isAuthenticated = false;
   redirectUrl: string;
   adminCredentials = {username:'admin', password:"batman" };
@@ -16,4 +19,9 @@ export class AuthService {
       return true;
     }
   }
+
+  getUser() {
+    return this.user;
+  }
+
 }
