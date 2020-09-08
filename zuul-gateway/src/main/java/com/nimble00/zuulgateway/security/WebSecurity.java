@@ -31,7 +31,7 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
                 .antMatchers("/users-ws/users/register").permitAll()
                 .antMatchers("/users-ws/login").permitAll()
                 .antMatchers(environment.getProperty("api.h2console.url" + ".path")).permitAll()
-                .antMatchers("/users-ws/users/test").permitAll()
+//                .antMatchers("/users-ws/users/test").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .addFilter(new JWTAuthorizationFilter(authenticationManager()));
