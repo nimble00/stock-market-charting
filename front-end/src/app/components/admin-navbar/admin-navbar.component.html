@@ -1,27 +1,31 @@
-<nav class="navbar navbar-inner navbar-fixed-top">
-    <div class="container">
-        <div class="navbar-header">
-            <!-- <button type="button" class="navbar-toggle" 
-                    (click)="isCollapsed = !isCollapsed">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button> -->
-            <a class="navbar-brand" routerLink="/home">
-                <!-- <img src="assets/images/people.png" alt="logo" /> -->
-                <h1 class="app-title">STOCK MARKET CHARTING</h1>
-            </a>
-            <span class="navbar-collapse" [attr.data-collapse]="isCollapsed">
-                <!-- <ul class="nav navbar-nav nav-pills navBarPadding"> -->
-                    <li routerLinkActive="active"><a routerLink="/companies">companies</a></li>
-                    <li routerLinkActive="active"><a routerLink="/exchanges">stock exchanges</a></li>
-                    <li routerLinkActive="active"><a routerLink="/ipo">ipo's</a></li>
-                    <li routerLinkActive="active"><a routerLink="/upload">import data</a></li>
-                    <!-- <li routerLinkActive="active"><a>{{ loginLogoutText }}</a></li>  -->
-                    <!-- (click)="loginOrOut()" -->
-                <!-- </ul> -->
-            </span>
-        </div>
-    </div>
-</nav>
+<h1>Stonks</h1>
+<div>
+  <input type="checkbox" id="companies" [checked]="showCompanies" (click)="toggleCompanies()">
+  <label for="companies">Companies</label>
+    &nbsp;&nbsp;&nbsp;
+  <input type="checkbox" id="stockEx" [checked]="showStockEx" (click)="toggleStockEx()">
+  <label for="stockEx">Stock Exchanges</label>
+  &nbsp;&nbsp;&nbsp;
+  <input type="checkbox" id="IPO" [checked]="showIPO" (click)="toggleIPO()">
+  <label for="IPO">IPO's</label>
+  &nbsp;&nbsp;&nbsp;
+  <input type="checkbox" id="uploader" [checked]="showUploader" (click)="toggleUploader()">
+  <label for="uploader">Upload Data</label>
+  &nbsp;&nbsp;&nbsp;
+  <input type="checkbox" id="charts" [checked]="showCharts" (click)="toggleCharts()">
+  <label for="charts">Charts</label>
+</div>
+
+<app-companies *ngIf="showCompanies"></app-companies>
+<!-- <app-messages></app-messages> -->
+<app-stock-ex *ngIf="showStockEx"></app-stock-ex>
+<app-ipo *ngIf="showIPO"></app-ipo>
+<app-uploader *ngIf="showUploader"></app-uploader>
+<app-charts *ngIf="showCharts"></app-charts>
+
+
+<!-- 
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at http://angular.io/license
+-->

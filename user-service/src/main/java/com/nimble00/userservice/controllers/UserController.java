@@ -49,6 +49,12 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.OK).body(user);
     }
 
+    @GetMapping("/email/{mail}")
+    public ResponseEntity<UserResponse> getUserInfo(@PathVariable String mail) {
+        UserResponse user = userService.findUserByEmail(mail);
+        return ResponseEntity.status(HttpStatus.OK).body(user);
+    }
+
 //    @PostMapping("/login")
 //    public ResponseEntity<UserResponse> login(@RequestBody LoginRequest loginRequest) {
 //        try {

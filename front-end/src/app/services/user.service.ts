@@ -1,13 +1,16 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { MyUser, MyUserLogin } from "../shared/interfaces";
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  private baseUrl = 'http://localhost:8080/user-service/api/';
+  private baseUrl = 'http://localhost:8088/user-ws/';
+  private myUser: MyUser;
+  private loginReuest: MyUserLogin;
 
   constructor(private http: HttpClient) { }
 

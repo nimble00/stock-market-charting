@@ -29,12 +29,12 @@ public class CompanyController {
 
     @GetMapping("/all")
     public ResponseEntity<List> getAllCompanies() {
-        return ResponseEntity.status(HttpStatus.FOUND).body(companyService.getAllCompanies());
+        return ResponseEntity.status(HttpStatus.OK).body(companyService.getAllCompanies());
     }
 
     @GetMapping("/{sector}")
     public ResponseEntity<List> getAllCompaniesInSector(@PathVariable String sector) {
-        return ResponseEntity.status(HttpStatus.FOUND).body(companyService.findAllCompanyBySector(sector));
+        return ResponseEntity.status(HttpStatus.OK).body(companyService.findAllCompanyBySector(sector));
     }
 
 //    @PostMapping("/turnover")
@@ -70,7 +70,7 @@ public class CompanyController {
     @GetMapping("/allInStockExchange/{stockExchange}")
     public ResponseEntity<List> getCompanyByStockExchange(@PathVariable String stockExchange) {
         List<CompanyResponse> list = companyService.findAllByExchangeListContaining(stockExchange);
-        return ResponseEntity.status(HttpStatus.FOUND).body(list);
+        return ResponseEntity.status(HttpStatus.OK).body(list);
     }
 
     @GetMapping("/id/{id}")
@@ -81,7 +81,7 @@ public class CompanyController {
 }
 
 // Test objects for Postman
-//{
+// {
 //        "name": "tesla",
 //        "turnover": 100000,
 //        "ceo": "daddy musk",
@@ -90,7 +90,7 @@ public class CompanyController {
 //        "sector": "tech",
 //        "briefWriteup": "bullish",
 //        "tickerList": ["TSLA"]
-//}
+// }
 
 //{
 //        "name": "amazon",

@@ -1,0 +1,36 @@
+import { Injectable } from '@angular/core';
+import { Company } from "../shared/interfaces";
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { AuthService } from "../services/auth.service";
+
+@Injectable({
+  providedIn: 'root'
+})
+export class StockmarketService {
+
+  private baseUrl = 'http://localhost:8088/company-service/company/';
+
+  constructor(private http: HttpClient, private auth: AuthService) { }
+
+  getCompanies() {
+    return this.http.get(`${this.baseUrl}/all`);
+  }
+
+  deleteCompany(id: string) {
+    return this.http.get(`${this.baseUrl}/${id}`);
+    // return "deleted successfully";
+  }
+
+  searchCompanies(ss: string) {
+    return this.http.get(`${this.baseUrl}/search/${ss}`);
+  }
+
+  updateCompany(company: Company, id: string) {
+    return this.http.post(`${this.baseUrl}/updateInfo/${id}`,company, {responseType:"json"});
+  }
+
+  addCompany(company: Company) {
+    return this.http.post(`${this.baseUrl}/addCompany`,company);
+  }
+}

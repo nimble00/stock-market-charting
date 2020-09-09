@@ -7,6 +7,7 @@
             Email
         </label>
         <input id="email" type="text" formControlName="email" required>
+        <p *ngIf="!loginForm.get('email').valid">Email must be of the form **@**.**</p>
     </div>
 
     <div>
@@ -14,7 +15,7 @@
             Password
         </label>
         <input id="password" type="password" formControlName="password" required>
-        <p>Password must have at least 6 characters and at least one numeric character</p>
+        <p *ngIf="!loginForm.get('password').valid">Password must have at least 6 characters and at least one numeric character</p>
     </div>
 
     <a [routerLink]="['/home']" routerLinkActive="router-link-active"  class="">

@@ -13,6 +13,12 @@ import { RegisterComponent } from './register/register.component';
 import { TopbarComponent } from './topbar/topbar.component';
 import { VerifyEmailComponent } from './components/verify-email/verify-email.component';
 import { HomeComponent } from './components/home/home.component';
+import { CompaniesComponent } from './components/companies/companies.component';
+import { IPOComponent } from './components/ipo/ipo.component';
+import { UploaderComponent } from './components/uploader/uploader.component';
+import { StockExComponent } from './components/stock-ex/stock-ex.component';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { ChartsComponent } from './components/charts/charts.component';
 
 @NgModule({
   declarations: [
@@ -25,14 +31,20 @@ import { HomeComponent } from './components/home/home.component';
     RegisterComponent,
     TopbarComponent,
     VerifyEmailComponent,
-    HomeComponent
+    HomeComponent,
+    CompaniesComponent,
+    IPOComponent,
+    UploaderComponent,
+    StockExComponent,
+    ChartsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [HttpClient, HttpClientModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

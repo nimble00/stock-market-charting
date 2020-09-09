@@ -1,0 +1,34 @@
+<h3>Companies</h3>
+<div>
+  <label>Company name:
+    <input #companyName />
+  </label>
+  <!-- (click) passes input value to add() and then clears the input -->
+  <button (click)="add(companyName.value); companyName.value=''">
+    add
+  </button>
+  <button (click)="search(companyName.value)">
+    search
+  </button>
+</div>
+
+<ul class="companies">
+  <li *ngFor="let company of companies">
+    <a (click)="edit(company)">
+      <span class="badge">{{ company.id || -1 }}</span>
+      <span *ngIf="company!==editCompany">{{company.name}}</span>
+      <input *ngIf="company===editCompany" [(ngModel)]="company.name"
+        (blur)="update()" (keyup.enter)="update()">
+    </a>
+    <button class="delete" title="delete company"
+        (click)="delete(company)">x
+    </button>
+  </li>
+</ul>
+
+
+<!-- 
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at http://angular.io/license
+-->

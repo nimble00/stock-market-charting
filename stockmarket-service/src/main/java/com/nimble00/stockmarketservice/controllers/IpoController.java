@@ -36,6 +36,6 @@ public class IpoController {
     @GetMapping("/all")
     public ResponseEntity<List<IpoDTO>> getAllIPOs() {
         List<IpoDTO> list = ipoService.getAllIPO();
-        return ResponseEntity.status(HttpStatus.FOUND).body(list);
+        return ResponseEntity.status(HttpStatus.OK).body(list);
     }
 }

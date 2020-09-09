@@ -21,49 +21,16 @@ export class AdminNavbarComponent implements OnInit {
   ngOnInit(): void {
 
   }
+  showCompanies = true;
+  showStockEx = true;
+  showIPO = true;
+  showUploader = true;
+  showCharts = true;
 
-  loginOrOut() {
-    // const isAuthenticated = this.authservice.isAuthenticated;
-    // if (isAuthenticated) {
-    //     this.authservice.logout()
-    //         .subscribe((status: boolean) => {
-    //             this.setLoginLogoutText();
-    //             this.growler.growl('Logged Out', GrowlerMessageType.Info);
-    //             this.router.navigate(['/customers']);
-    //             return;
-    //         },
-    //         (err: any) => this.logger.log(err));
-    // }
-    // this.redirectToLogin();
-    console.log("login clicked!!!");
-  }
-
-  redirectToLogin() {
-    this.router.navigate(['/login']);
-  }
-
-  setLoginLogoutText() {
-    this.loginLogoutText = (this.authservice.isAuthenticated) ? 'Logout' : 'Login';
-  }
+  toggleCompanies() { this.showCompanies = !this.showCompanies; }
+  toggleStockEx() { this.showStockEx = !this.showStockEx; }
+  toggleIPO() { this.showIPO = !this.showIPO; }
+  toggleUploader() { this.showUploader = !this.showUploader; }
+  toggleCharts() { this.showCharts = !this.showCharts; }
 
 }
-
-
-
-// export class NavbarComponent implements OnInit, OnDestroy {
-
-
-
-//   ngOnInit() {
-//     this.sub = this.authservice.authChanged
-//       .subscribe((loggedIn: boolean) => {
-//         this.setLoginLogoutText();
-//       },
-//         (err: any) => this.logger.log(err));
-//   }
-
-//   ngOnDestroy() {
-//     this.sub.unsubscribe();
-//   }
-
-// }

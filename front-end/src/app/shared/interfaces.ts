@@ -6,14 +6,21 @@ export interface MyUser {
     fullname: string;
     email: string;
     usertype: string;
-    verified: boolean;
+    confirmed: boolean;
 }
 
 
 
-export interface IOrder {
-    productName: string;
-    itemCost: number;
+export interface Company {
+    id: string;
+    name: string;
+    turnover: number;
+    ceo: "daddy musk";
+    boardOfDirs: any;
+    stockExchangeList: any;
+    sector: string;
+    briefWriteup: string;
+    tickerList: any;
 }
 
 

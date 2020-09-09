@@ -18,6 +18,7 @@ export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
   errorMessage: string;
+  creds: MyUserLogin;
 
   constructor(private formBuilder: FormBuilder,
     private router: Router,
@@ -25,8 +26,6 @@ export class LoginComponent implements OnInit {
     this.loginForm = this.formBuilder.group({
       email:      ['', [ Validators.required, ValidationService.emailValidator ]],
       password:   ['', [ Validators.required, ValidationService.passwordValidator ]]
-      // email: "",
-      // password: ""
     });
   }
 
@@ -35,8 +34,10 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(loginData) {
-    // IMPLEMENT AUTHENTICATION HERE!!!
-    this.loginForm.reset();
-    console.warn('Your order has been submitted', loginData);
+    // this.loginForm.reset();
+    this.creds = loginData;
+    let resp = this.authService.login(loginData);
+    
+    console.warn('Your login credentials have been submitted', loginData);
   }
 }
