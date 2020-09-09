@@ -17,7 +17,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Company {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITIY)
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "company_id")
     private Integer id;
     private String name;

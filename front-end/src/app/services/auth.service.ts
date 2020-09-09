@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
 
-  private baseUrl = 'http://localhost:8088/user-ws';
+  private baseUrl = 'http://192.168.1.101:8088/users-ws';
   loginReuest: MyUserLogin;
 
   user: MyUser;
@@ -22,16 +22,26 @@ export class AuthService {
   login(credentials: MyUserLogin) {
     this.http.post(`${this.baseUrl}/login`, credentials, {observe: 'response'}).subscribe(resp => {
       localStorage.setItem("myToken", JSON.stringify(resp.headers.get('myToken')));
+      console.log(resp.status);
+      console.log(resp.headers);
+      console.log(resp.headers.get('myToken'));
+      console.log("token saved to local storage!!!");
       this.fetchUser(credentials.email).subscribe(
         (resp: MyUser) => {
           this.user = resp;
           localStorage.setItem("myUser", JSON.stringify(resp));
           this.router.navigate(["home"]);
-          return this.getUser();
+          // return this.getUser();
         },
-        (error) => { return `${error} : try again! if you're new then click on Register button`; }
+        (error) => {
+          console.log("####");
+          console.log(error);
+          console.log("####");
+          return `${error} : try again! if you're new then click on Register button`;
+        }
       );
     });
+    return this.getUser();
   }
 
   getUser() {
@@ -39,7 +49,9 @@ export class AuthService {
   }
 
   fetchUser(mail: string) {
-    return this.http.get(`${this.baseUrl}/users/email/${mail}`);
+    let tok = JSON.parse(localStorage.getItem("myToken"));
+    console.log(tok);
+    return this.http.get(`${this.baseUrl}/users/email/${mail}`, {headers: {"Authorization": tok}});
   }
 
   createUser(user: Object): Observable<Object> {

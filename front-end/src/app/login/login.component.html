@@ -18,9 +18,9 @@
         <p *ngIf="!loginForm.get('password').valid">Password must have at least 6 characters and at least one numeric character</p>
     </div>
 
-    <a [routerLink]="['/home']" routerLinkActive="router-link-active"  class="">
-        <button class="button" type="submit" [disabled]="!loginForm.valid">Login</button>
-    </a>
+    <!-- <a [routerLink]="['/home']" routerLinkActive="router-link-active"  class=""> -->
+    <button class="button" type="submit" [disabled]="!loginForm.valid">Login</button>
+    <!-- </a> -->
     &nbsp;
     <a [routerLink]="['/register']" routerLinkActive="router-link-active" class="">
         <button class="button">Register</button>

@@ -20,7 +20,7 @@ public class StockExchangeController {
 //        this.stockExchangeService = stockExchangeService;
 //    }
 
-
+    @Autowired
     public StockExchangeController(StockExchangeService stockExchangeService) {
         super();
         this.stockExchangeService = stockExchangeService;

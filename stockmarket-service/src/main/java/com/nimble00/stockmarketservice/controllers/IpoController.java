@@ -15,11 +15,9 @@ public class IpoController {
 
     private IPOService ipoService;
 
+    @Autowired
     public IpoController(IPOService ipoService) {
         this.ipoService = ipoService;
-    }
-
-    public IpoController() {
     }
 
     @GetMapping("/test")

@@ -16,7 +16,8 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-@Controller
+@RestController
+//@CrossOrigin(origins = "*", allowedHeaders = "*", exposedHeaders = {"myToken"})
 @RequestMapping("/users")
 public class UserController {
 

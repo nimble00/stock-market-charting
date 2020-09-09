@@ -58,6 +58,9 @@ public class UserServiceImpl implements UserService {
     }
     @Override
     public UserDetails loadUserByUsername(String email) {
+        System.out.println("$$$");
+        System.out.println(email);
+        System.out.println("$$$");
         MyUser myUser = userDAO.findByEmail(email);
         return new User(myUser.getEmail(), myUser.getPassword(), true, true, true, true, new ArrayList<>());
     }

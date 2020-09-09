@@ -37,7 +37,9 @@ export class LoginComponent implements OnInit {
     // this.loginForm.reset();
     this.creds = loginData;
     let resp = this.authService.login(loginData);
-    
+    console.log("####");
+    console.log(resp);
+    console.log("####");
     console.warn('Your login credentials have been submitted', loginData);
   }
 }

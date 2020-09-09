@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
-import { AuthService } from '../services/auth.service';
-import { ValidationService } from '../services/validation.service';
-import { MyUserLogin } from '../shared/interfaces';
 import { Router } from '@angular/router';
+
+import { ValidationService } from '../services/validation.service';
+import { MyUserLogin, MyUser } from '../shared/interfaces';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-register',
@@ -26,7 +26,8 @@ export class RegisterComponent implements OnInit {
       fullname: "",
       email: "",
       phone: "",
-      password: ""
+      password: "",
+      confirmed: true
     });
   }
 
@@ -35,9 +36,16 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit(registerData) {
-    // IMPLEMENT AUTHENTICATION HERE!!!
-    this.registerForm.reset();
-    console.warn('Your order has been submitted', registerData);
+    this.authService.createUser(registerData).subscribe(
+      (resp: MyUser) => {
+        window.alert(`Hi ${resp.fullname}`);
+        localStorage.setItem("myUser", JSON.stringify(resp));
+      },
+      (error) => {
+        console.log(error);
+      }
+    )
+    console.warn('Your data has been submitted', registerData);
     console.log(this.usertype);
   }
 

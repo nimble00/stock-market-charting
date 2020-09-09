@@ -9,28 +9,31 @@ import { AuthService } from "../services/auth.service";
 })
 export class StockmarketService {
 
-  private baseUrl = 'http://localhost:8088/company-service/company/';
+  private baseUrl = 'http://localhost:8080/company-service/company/';
 
   constructor(private http: HttpClient, private auth: AuthService) { }
 
   getCompanies() {
-    return this.http.get(`${this.baseUrl}/all`);
+    let tok = JSON.parse(localStorage.getItem("myToken"));
+    console.log(tok);
+    return this.http.get(`${this.baseUrl}all`, {headers: {"Authorization": tok}});
+    // return this.http.get(`${this.baseUrl}all`);
   }
 
   deleteCompany(id: string) {
-    return this.http.get(`${this.baseUrl}/${id}`);
+    return this.http.get(`${this.baseUrl}${id}`);
     // return "deleted successfully";
   }
 
   searchCompanies(ss: string) {
-    return this.http.get(`${this.baseUrl}/search/${ss}`);
+    return this.http.get(`${this.baseUrl}search/${ss}`);
   }
 
   updateCompany(company: Company, id: string) {
-    return this.http.post(`${this.baseUrl}/updateInfo/${id}`,company, {responseType:"json"});
+    return this.http.post(`${this.baseUrl}updateInfo/${id}`,company, {responseType:"json"});
   }
 
   addCompany(company: Company) {
-    return this.http.post(`${this.baseUrl}/addCompany`,company);
+    return this.http.post(`${this.baseUrl}addCompany`,company);
   }
 }
