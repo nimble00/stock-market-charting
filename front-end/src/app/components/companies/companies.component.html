@@ -3,14 +3,15 @@
   <label>Company name:
     <input #companyName />
   </label>
-  <!-- (click) passes input value to add() and then clears the input -->
-  <button (click)="add(companyName.value); companyName.value=''">
-    add
-  </button>
   <button (click)="search(companyName.value)">
     search
   </button>
 </div>
+<!-- <div class=""> -->
+    <a [routerLink]="['/addCompany']" routerLinkActive="router-link-active"  class="">
+        <button class="button fancy-button" type="submit">Add Company</button>
+    </a>
+<!-- </div> -->
 
 <ul class="companies">
   <li *ngFor="let company of companies">

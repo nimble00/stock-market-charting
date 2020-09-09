@@ -50,7 +50,9 @@ public class CompanyServiceImpl implements CompanyService {
         company.setName(companyRequest.getName());
         company.setSector(companyRequest.getSector());
         List<StockExchange> listSE = new ArrayList<>();
+
         List<String> list = companyRequest.getStockExchangeList();
+        System.out.println(companyRequest.toString());
         for (String st: list) {
             listSE.add(stockExchangeRepo.findByName(st));
         }

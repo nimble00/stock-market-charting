@@ -1,0 +1,62 @@
+<div class="">
+    <app-topbar></app-topbar>
+</div>
+<div class="" >
+    <form [formGroup]="companyForm" (ngSubmit)="onSubmit(companyForm.value)">
+
+        <div>
+            <label for="name">
+                Name
+            </label>
+            <input id="name" type="text" formControlName="name" required>
+        </div>
+        <div>
+            <label for="ceo">
+                CEO
+            </label>
+            <input id="ceo" type="text" formControlName="ceo" required>
+        </div>
+        <div>
+            <label for="turnover">
+                Turnover
+            </label>
+            <input id="turnover" type="text" formControlName="turnover" required>
+        </div>
+        <div>
+            <label for="sector">
+                Sector
+            </label>
+            <input id="sector" type="text" formControlName="sector" required>
+        </div>
+        <div>
+            <label for="briefWriteup">
+                Brief WriteUp
+            </label>
+            <input id="briefWriteup" type="text" formControlName="briefWriteup" required>
+        </div>
+        <p class="">Enter comma ',' separated values in the following:</p>
+        <div>
+            <label for="boardOfDirs">
+                Board of Directors
+            </label>
+            <input id="boardOfDirs" type="text" formControlName="boardOfDirs" required>
+        </div>    
+        <div>
+            <label for="stockExchangeList">
+                Stock Exchange Listings
+            </label>
+            <input id="stockExchangeList" type="text" formControlName="stockExchangeList" required>
+        </div>    
+        <div>
+            <label for="tickerList">
+                Tickers of the company in above Stock Exchanges
+            </label>
+            <input id="tickerList" type="text" formControlName="tickerList" required>
+        </div>
+        
+        <!-- <a [routerLink]="['/verify']" routerLinkActive="router-link-active"  class=""> -->
+        <button class="button" type="submit" [disabled]="!companyForm.valid">Add Company</button>
+        <!-- </a> -->
+        
+    </form>
+</div>

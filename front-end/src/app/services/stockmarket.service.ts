@@ -9,7 +9,7 @@ import { AuthService } from "../services/auth.service";
 })
 export class StockmarketService {
 
-  private baseUrl = 'http://localhost:8080/company-service/company/';
+  private baseUrl = 'http://localhost:8088/company-service/company/';
 
   constructor(private http: HttpClient, private auth: AuthService) { }
 
@@ -34,6 +34,9 @@ export class StockmarketService {
   }
 
   addCompany(company: Company) {
-    return this.http.post(`${this.baseUrl}addCompany`,company);
+    let tok = JSON.parse(localStorage.getItem("myToken"));
+    console.log(tok);
+    return this.http.post(`${this.baseUrl}addCompany`, company, {headers: {"Authorization": tok}});
+    // return this.http.post(`${this.baseUrl}addCompany`,company);
   }
 }

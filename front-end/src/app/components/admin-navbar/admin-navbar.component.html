@@ -1,5 +1,10 @@
-<h1>Stonks</h1>
+<a [routerLink]="['/home']" routerLinkActive="router-link-active"  class="">
+    <h1>Stonks</h1>
+</a>
 <div>
+    <input type="checkbox" id="uploader" [checked]="showUploader" (click)="toggleUploader()">
+    <label for="uploader">Upload Data</label>
+    &nbsp;&nbsp;&nbsp;
   <input type="checkbox" id="companies" [checked]="showCompanies" (click)="toggleCompanies()">
   <label for="companies">Companies</label>
     &nbsp;&nbsp;&nbsp;
@@ -8,9 +13,6 @@
   &nbsp;&nbsp;&nbsp;
   <input type="checkbox" id="IPO" [checked]="showIPO" (click)="toggleIPO()">
   <label for="IPO">IPO's</label>
-  &nbsp;&nbsp;&nbsp;
-  <input type="checkbox" id="uploader" [checked]="showUploader" (click)="toggleUploader()">
-  <label for="uploader">Upload Data</label>
   &nbsp;&nbsp;&nbsp;
   <input type="checkbox" id="charts" [checked]="showCharts" (click)="toggleCharts()">
   <label for="charts">Charts</label>

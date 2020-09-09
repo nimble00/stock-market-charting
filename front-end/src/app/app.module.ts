@@ -19,6 +19,7 @@ import { UploaderComponent } from './components/uploader/uploader.component';
 import { StockExComponent } from './components/stock-ex/stock-ex.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ChartsComponent } from './components/charts/charts.component';
+import { AddCompanyComponent } from './components/add-company/add-company.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { ChartsComponent } from './components/charts/charts.component';
     IPOComponent,
     UploaderComponent,
     StockExComponent,
-    ChartsComponent
+    ChartsComponent,
+    AddCompanyComponent
   ],
   imports: [
     BrowserModule,
