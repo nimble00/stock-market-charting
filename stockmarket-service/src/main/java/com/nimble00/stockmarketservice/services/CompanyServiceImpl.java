@@ -50,14 +50,14 @@ public class CompanyServiceImpl implements CompanyService {
         company.setName(companyRequest.getName());
         company.setSector(companyRequest.getSector());
         List<StockExchange> listSE = new ArrayList<>();
-
-        List<String> list = companyRequest.getStockExchangeList();
+        String[] list = companyRequest.getStockExchangeList().split(",");
         System.out.println(companyRequest.toString());
         for (String st: list) {
             listSE.add(stockExchangeRepo.findByName(st));
         }
         company.setStockExchangeList(listSE);
-        company.setTickerList(companyRequest.getTickerList());
+
+        company.setTickerList(Arrays.asList(companyRequest.getTickerList().split(",")));
         company.setTurnover(companyRequest.getTurnover());
         companyRepo.save(company);
         company1 = companyRepo.findByName(company.getName());
@@ -69,7 +69,7 @@ public class CompanyServiceImpl implements CompanyService {
         Optional<Company> optionalCompany = companyRepo.findById(companyId);
         Company company = optionalCompany.get();
         List<StockExchange> listSE = new ArrayList<>();
-        List<String> list = companyRequest.getStockExchangeList();
+        String[] list = companyRequest.getStockExchangeList().split(",");
         for (String st: list) {
             listSE.add(stockExchangeRepo.findByName(st));
         }
@@ -79,7 +79,7 @@ public class CompanyServiceImpl implements CompanyService {
         company.setCeo(companyRequest.getCeo());
         company.setName(companyRequest.getName());
         company.setSector(companyRequest.getSector());
-        company.setTickerList(companyRequest.getTickerList());
+        company.setTickerList(Arrays.asList(companyRequest.getTickerList().split(",")));
         company.setTurnover(companyRequest.getTurnover());
         companyRepo.save(company);
         return modelMapper.map(company,CompanyResponse.class);

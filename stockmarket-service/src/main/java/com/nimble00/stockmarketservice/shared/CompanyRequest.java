@@ -1,5 +1,6 @@
 package com.nimble00.stockmarketservice.shared;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.nimble00.stockmarketservice.models.StockExchange;
 import com.nimble00.stockmarketservice.models.Ticker;
 import lombok.Data;
@@ -13,10 +14,12 @@ public class CompanyRequest {
     private Long turnover;
     private String ceo;
     private String boardOfDirs;
-    private List<String> stockExchangeList;
+//    @JsonIgnore
+    private String stockExchangeList;
     //    private String stockExList;
     private String sector;
     private String briefWriteup;
     //    private String tickList;
-    private List<String> tickerList;
+//    @JsonIgnore
+    private String tickerList;
 }

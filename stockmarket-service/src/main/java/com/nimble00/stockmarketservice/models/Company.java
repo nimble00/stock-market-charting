@@ -24,6 +24,7 @@ public class Company {
     private Long turnover;
     private String ceo;
     private String boardOfDirs;
+//    @JsonIgnore
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(name = "company_exchange", joinColumns = {@JoinColumn(name = "company_id") },
             inverseJoinColumns = {@JoinColumn(name = "exchange_id") })
@@ -31,5 +32,6 @@ public class Company {
     private String sector;
     private String briefWriteup;
     @ElementCollection
+    @JsonIgnore
     private List<String> tickerList;
 }

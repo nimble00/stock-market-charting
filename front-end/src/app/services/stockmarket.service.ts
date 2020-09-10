@@ -9,7 +9,7 @@ import { AuthService } from "../services/auth.service";
 })
 export class StockmarketService {
 
-  private baseUrl = 'http://localhost:8088/company-service/company/';
+  private baseUrl = 'http://192.168.1.100:8088/company-service/company/';
 
   constructor(private http: HttpClient, private auth: AuthService) { }
 

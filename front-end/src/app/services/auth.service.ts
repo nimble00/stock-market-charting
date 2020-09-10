@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
 
-  private baseUrl = 'http://192.168.1.101:8088/users-ws';
+  private baseUrl = 'http://192.168.1.100:8088/users-ws';
   loginReuest: MyUserLogin;
 
   user: MyUser;
